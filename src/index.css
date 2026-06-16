@@ -1,0 +1,53 @@
+.app-container {
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  background: #f3f4f6;
+  min-height: 100vh;
+}
+.form-card {
+  max-width: 550px;
+  margin: 30px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+.form-card form { display: flex; flex-direction: column; gap: 10px; }
+.form-card input[type="text"], .form-card input[type="number"] { padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+.grid-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+.pallet-input-group { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
+.action-buttons { display: flex; gap: 10px; }
+.primary-btn { background: #000; color: white; border: none; padding: 12px; cursor: pointer; font-weight: bold; border-radius: 4px; width: 100%; }
+.back-btn { background: #6b7280; color: white; border: none; padding: 12px; cursor: pointer; border-radius: 4px; }
+.checkbox-label { display: flex; align-items: center; gap: 10px; margin: 10px 0; font-weight: bold; cursor: pointer; }
+.print-bar { display: flex; justify-content: space-between; max-width: 210mm; margin: 10px auto; background: #fff; padding: 15px; border-radius: 6px; }
+.print-btn { background: #10b981; color: white; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; border-radius: 4px; }
+
+.a4-page {
+  width: 210mm;
+  height: 297mm;
+  background: white;
+  margin: 20px auto;
+  padding: 20mm 15mm;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+  gap: 35mm;
+  border: 1px dashed #bbb;
+  page-break-after: always;
+}
+.logistic-table-container { width: 100%; }
+.logistic-table { width: 100%; border-collapse: collapse; border: 3px solid #000000; background-color: #ffffff; }
+.logistic-table td { border: 2px solid #000000; padding: 14px 10px; vertical-align: middle; }
+.cell-title { width: 30%; font-weight: bold; font-size: 18px; text-align: center; text-transform: uppercase; }
+.cell-value { text-align: center; font-size: 36px; text-transform: uppercase; }
+.value-bold { font-weight: 800; color: #000000; }
+.table-footer-website { text-align: center; font-size: 20px; font-weight: bold; color: #0033cc; padding: 12px 0 !important; text-transform: lowercase; }
+
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  body { background: white; margin: 0; }
+  .no-print { display: none !important; }
+  .a4-page { margin: 0; border: none; width: 210mm; height: 297mm; padding: 20mm 15mm; }
+}
