@@ -9,14 +9,15 @@ export default function CargoLabelApp() {
   const [customerNo, setCustomerNo] = useState('');
   const [pallets, setPallets] = useState([]);
 
+  // Form onaylandığında EN ve BOY default gelir, YÜKSEKLİK el ile girilmek üzere BOŞ kalır
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const initialPallets = Array.from({ length: palletCount }, (_, i) => ({
       id: i + 1,
-      weight: '',     
-      width: '80',    
-      length: '120',  
-      height: '150',  
+      weight: '',     // Ağırlık el ile girilecek
+      width: '80',    // Standart En default (80 cm)
+      length: '120',  // Standart Boy default (120 cm)
+      height: '',     // 🎯 İstediğin gibi artık OTOMATİK 150 DEĞİL, tamamen boş geliyor!
     }));
     setPallets(initialPallets);
     setStep(2);
@@ -81,6 +82,7 @@ export default function CargoLabelApp() {
                 <input type="number" placeholder="WEIGHT (KG)" value={pallet.weight} onChange={(e) => handlePalletChange(index, 'weight', e.target.value)} required />
                 <input type="number" placeholder="En (cm)" value={pallet.width} onChange={(e) => handlePalletChange(index, 'width', e.target.value)} required />
                 <input type="number" placeholder="Boy (cm)" value={pallet.length} onChange={(e) => handlePalletChange(index, 'length', e.target.value)} required />
+                {/* Yükseklik inputu artık tamamen temiz placeholder ile açılacak */}
                 <input type="number" placeholder="Yükseklik (cm)" value={pallet.height} onChange={(e) => handlePalletChange(index, 'height', e.target.value)} required />
               </div>
             </div>
@@ -104,7 +106,6 @@ export default function CargoLabelApp() {
       {step === 3 && (
         <div className="a4-print-area">
           {palletPages.map((pageLabels, pageIndex) => (
-            /* Eğer sayfadaki etiket sayısı 1 ise 'single-label' klasını ekliyoruz */
             <div key={pageIndex} className={`a4-page ${pageLabels.length === 1 ? 'single-label' : ''}`}>
               {pageLabels.map((pallet) => (
                 <div key={pallet.id} className="logistic-card">
